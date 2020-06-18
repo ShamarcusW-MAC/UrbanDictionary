@@ -25,13 +25,15 @@ class MainActivity : AppCompatActivity() {
     private val compositeDisposable = CompositeDisposable()
     private lateinit var comparator: Comparator<Definition>
     private lateinit var adapter: DefinitionAdapter
+    private lateinit var binding: ActivityMainBinding
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
           supportActionBar?.hide()
 
-        val binding: ActivityMainBinding = DataBindingUtil.setContentView(this, R.layout.activity_main)
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
         viewModel = ViewModelProviders.of(this)
             .get(UrbanViewModel::class.java)
 
@@ -97,27 +99,13 @@ class MainActivity : AppCompatActivity() {
 
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
-        val binding: ActivityMainBinding = DataBindingUtil.setContentView(this, R.layout.activity_main)
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
 
-        binding.searchButton.setOnClickListener {
 
             viewModel.makeCall(binding.searchEdittext.text.toString())
 
-            binding.itemsRecyclerview.visibility = View.INVISIBLE
-            binding.loadingProgressbar.visibility = View.VISIBLE
-            compositeDisposable.add(viewModel.getDefinitions(binding.searchEdittext.text.toString())
-                .subscribe({ definitions ->
 
-                    displayDefinitions(definitions, binding.sortSpinner.selectedItem.toString())
-                    binding.loadingProgressbar.visibility = View.INVISIBLE
-                    binding.itemsRecyclerview.visibility = View.VISIBLE
-
-                }, { throwable ->
-                    Log.d("TAG_ERROR", throwable.message.toString())
-                })
-            )
-
-        }    }
+        }
 
 
 }
