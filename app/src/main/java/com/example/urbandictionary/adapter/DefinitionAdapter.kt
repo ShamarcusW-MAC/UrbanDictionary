@@ -20,10 +20,12 @@ class DefinitionAdapter(val definitionList: List<Definition>) :
         return DefinitionViewHolder(view)
     }
 
+    //Returns the size of the list of definitions
     override fun getItemCount(): Int {
         return definitionList.size
     }
 
+    //Binds the data with the view
     override fun onBindViewHolder(holder: DefinitionViewHolder, position: Int) {
         holder.word.text = definitionList[position].word
         holder.definition.text = definitionList[position].definition
@@ -32,6 +34,7 @@ class DefinitionAdapter(val definitionList: List<Definition>) :
     }
 
 
+    //Data being set to each view
     inner class DefinitionViewHolder(itemView : View): RecyclerView.ViewHolder(itemView) {
         val word: TextView = itemView.findViewById(R.id.word_title_textview)
         val definition: TextView = itemView.findViewById(R.id.dictionary_item_textview)

@@ -39,7 +39,7 @@ class MainActivity : AppCompatActivity() {
         binding.sortSpinner.onItemSelectedListener
         binding.searchEdittext.requestFocus()
 
-
+        //Definitions of the search word are obtained throught the api call.
         viewModel.makeCall(binding.searchEdittext.text.toString())
         binding.searchButton.setOnClickListener {
 
@@ -59,6 +59,7 @@ class MainActivity : AppCompatActivity() {
 
         }
 
+        //Drop-down menu is filled with the choices or sorting by thumbs up or thumbs down
         ArrayAdapter.createFromResource(
             this,
             R.array.sort_choices,
@@ -72,6 +73,8 @@ class MainActivity : AppCompatActivity() {
 
     }
 
+
+    //Adapter is initialized and recycler view is displayed with the definitions.
     private fun displayDefinitions(repositories: List<Definition>, selectedSort: String){
         if(selectedSort == "Thumbs Up") {
             comparator = compareByDescending<Definition> { it.thumbsUp }
