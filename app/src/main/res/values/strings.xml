@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">UrbanDictionary</string>
+    <string name="api_host">x-rapidapi-host:mashape-community-urban-dictionary.p.rapidapi.com</string>
+    <string name="api_key">x-rapidapi-key:d529666efcmsh1f5e3d2dc08f4b6p16ebf8jsndb1d68f87792</string>
+    <string-array name="sort_choices">
+        <item>Choose</item>
+        <item>Thumbs Up</item>
+        <item>Thumbs Down</item>
+    </string-array>
+
+</resources>
+

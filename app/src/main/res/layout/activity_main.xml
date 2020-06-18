@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+
+    <data>
+        <variable
+            name="data"
+            type="com.example.urbandictionary.model.Definition"
+            />
+    </data>
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/gradient_background"
+    tools:context=".view.MainActivity">
+
+    <EditText
+        android:id="@+id/search_edittext"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginStart="64dp"
+        android:layout_marginEnd="64dp"
+        android:background="@drawable/rounded_edittext"
+        android:maxLines="1"
+        android:textColor="@color/colorBlack"
+        android:hint="Search any word..."
+        android:drawableStart="@drawable/ic_search_gray_24dp"
+        android:drawablePadding="4dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        />
+
+    <Button
+        android:id="@+id/search_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:textStyle="bold"
+        android:text="Search"
+        android:textColor="#FFFFFF"
+        android:background="@drawable/button_search"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/sort_textview"
+        app:layout_constraintTop_toBottomOf="@id/search_edittext"
+        app:layout_constraintBottom_toTopOf="@id/items_recyclerview"
+        />
+
+    <TextView
+        android:id="@+id/sort_textview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Sort By:"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@id/search_button"
+        app:layout_constraintEnd_toStartOf="@id/sort_spinner"
+        app:layout_constraintTop_toTopOf="@id/sort_spinner"
+        app:layout_constraintBottom_toBottomOf="@id/sort_spinner"
+        />
+
+    <Spinner
+        android:id="@+id/sort_spinner"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="32dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/search_edittext"
+        app:layout_constraintBottom_toTopOf="@id/items_recyclerview"
+        />
+
+    <ProgressBar
+        android:id="@+id/loading_progressbar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="invisible"
+        android:progressDrawable="@drawable/progress_bar_style"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/search_button"
+        app:layout_constraintBottom_toBottomOf="@id/items_recyclerview"
+
+        />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/items_recyclerview"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginBottom="50dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/search_button"
+        app:layout_constraintBottom_toBottomOf="parent"
+        />
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>
