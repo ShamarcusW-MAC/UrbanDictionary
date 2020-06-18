@@ -40,8 +40,9 @@ class MainActivity : AppCompatActivity() {
         binding.searchEdittext.requestFocus()
 
         //Definitions of the search word are obtained throught the api call.
-        viewModel.makeCall(binding.searchEdittext.text.toString())
         binding.searchButton.setOnClickListener {
+
+            viewModel.makeCall(binding.searchEdittext.text.toString())
 
             binding.itemsRecyclerview.visibility = View.INVISIBLE
             binding.loadingProgressbar.visibility = View.VISIBLE
