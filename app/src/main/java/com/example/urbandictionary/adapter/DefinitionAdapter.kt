@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.urbandictionary.R
 import com.example.urbandictionary.model.Definition
 
-class DefinitionAdapter(val definitionList: List<Definition>) :
+class DefinitionAdapter(private val definitionList: List<Definition>) :
     RecyclerView.Adapter<DefinitionAdapter.DefinitionViewHolder>(){
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DefinitionViewHolder {

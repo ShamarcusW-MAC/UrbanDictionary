@@ -13,7 +13,7 @@ class UrbanViewModel: ViewModel() {
 
     private val urbanFactory: UrbanFactory = UrbanFactory();
     private val compositeDisposable : CompositeDisposable = CompositeDisposable()
-    var definitionData : MutableLiveData<Definition> = MutableLiveData()
+    private var definitionData : MutableLiveData<Definition> = MutableLiveData()
 
     fun makeCall(string: String) {
         compositeDisposable.add(getDefinitions("" + string).subscribe { definition ->

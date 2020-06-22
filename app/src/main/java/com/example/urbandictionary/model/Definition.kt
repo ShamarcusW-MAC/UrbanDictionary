@@ -2,9 +2,6 @@ package com.example.urbandictionary.model
 
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
-import android.R.attr.rating
-
-
 
 class Definition {
 

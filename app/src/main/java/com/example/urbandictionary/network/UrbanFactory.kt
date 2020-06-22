@@ -12,32 +12,25 @@ import retrofit2.converter.gson.GsonConverterFactory
 class UrbanFactory {
 
     private val BASE_URL = "https://mashape-community-urban-dictionary.p.rapidapi.com"
-
     private val urbanService : UrbanService
-
 
     init {
         urbanService = createService(retrofitInstance())
     }
 
     private fun retrofitInstance(): Retrofit{
-
-
         val loggingInterceptor = HttpLoggingInterceptor(HttpLoggingInterceptor.Logger { message ->
             Log.d("TAG_X", message)
         })
-
         loggingInterceptor.level = (HttpLoggingInterceptor.Level.BODY)
         val httpClient =  OkHttpClient.Builder().addInterceptor(loggingInterceptor)
             .build()
-
         return Retrofit.Builder().baseUrl(BASE_URL)
             .addConverterFactory(GsonConverterFactory.create()) //convert JSON objects to POJO
             .client(httpClient)
             .addCallAdapterFactory(RxJava2CallAdapterFactory.create())//mapping responses RxJava
             .build()
     }
-
 
     private fun createService(retrofit: Retrofit) : UrbanService {
         return retrofit.create(UrbanService::class.java)
@@ -47,6 +40,5 @@ class UrbanFactory {
         return urbanService.getDefinition(searchWord).map {
             it.definitionList
         }
-
     }
 }
