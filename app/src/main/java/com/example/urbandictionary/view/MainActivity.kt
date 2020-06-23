@@ -27,6 +27,8 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+
+
         supportActionBar?.hide()
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
         viewModel = ViewModelProviders.of(this)
@@ -41,6 +43,7 @@ class MainActivity : AppCompatActivity() {
             binding.loadingProgressbar.visibility = View.VISIBLE
             compositeDisposable.add(viewModel.getDefinitions(binding.searchEdittext.text.toString())
                 .subscribe({ definitions ->
+                    viewModel.definitionData.value = definitions[0]
                     displayDefinitions(definitions, binding.sortSpinner.selectedItem.toString())
                     binding.loadingProgressbar.visibility = View.INVISIBLE
                     binding.itemsRecyclerview.visibility = View.VISIBLE

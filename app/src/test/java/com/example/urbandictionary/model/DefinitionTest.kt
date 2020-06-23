@@ -6,7 +6,7 @@ import org.junit.Test
 class DefinitionTest {
 
     @Test
-    fun DataTest() {
+    fun dataTest() {
         var definition = Definition()
         definition.thumbsUp = 10
         definition.thumbsDown = 5
@@ -23,5 +23,4 @@ class DefinitionTest {
 
         assertEquals("Shamarcus", definition.word)
     }
-
 }
