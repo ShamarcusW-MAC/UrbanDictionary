@@ -1,13 +1,15 @@
 package com.example.urbandictionary.viewmodel
 
-import android.util.Log
+import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import com.example.urbandictionary.model.Definition
 import com.example.urbandictionary.model.DefinitionResponse
 import io.reactivex.Observable
 import org.junit.Before
 
 import org.junit.Assert.*
+import org.junit.Rule
 import org.junit.Test
+import org.junit.rules.TestRule
 import org.junit.runner.RunWith
 import org.junit.runners.BlockJUnit4ClassRunner
 import org.mockito.Mock
@@ -16,6 +18,10 @@ import org.mockito.MockitoAnnotations
 
 @RunWith(BlockJUnit4ClassRunner::class)
 class UrbanViewModelTest {
+
+    @JvmField
+    @Rule
+    var rule: TestRule = InstantTaskExecutorRule()
 
     @Mock
     lateinit var vm : UrbanViewModel
@@ -60,12 +66,11 @@ class UrbanViewModelTest {
 
         val definitionResponse = DefinitionResponse()
         definitionResponse.definitionList = definitionList
-        Mockito.`when`(this.vm.getDefinitions("game")).thenReturn(Observable.just(definitionList))
+        Mockito.`when`(vm.getDefinitions("game")).thenReturn(Observable.just(definitionList))
 
         vm.makeCall("game")
         vm.getDefinitions("game")
 
-        Log.d("TAG_VALUE", "" + vm.definitionData.value)
         assertEquals(definitionList, vm.definitionData.value)
 
     }
