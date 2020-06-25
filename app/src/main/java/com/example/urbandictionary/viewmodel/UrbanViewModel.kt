@@ -13,19 +13,12 @@ class UrbanViewModel: ViewModel() {
 
     val urbanFactory: UrbanFactory = UrbanFactory();
     val compositeDisposable : CompositeDisposable = CompositeDisposable()
-    var definitionData : MutableLiveData<Definition> = MutableLiveData()
-    var response: Boolean = false
+    var definitionData : MutableLiveData<List<Definition>> = MutableLiveData()
 
     fun makeCall(string: String) {
         compositeDisposable.add(getDefinitions("" + string).subscribe { definition ->
-
-            if(definition.isNotEmpty()) {
-                    definitionData.value = definition[0]
-                    response = true
-                    definitionData.postValue(definition.get(0))
-            } else {
-                response = false
-            }
+            definitionData.value = definition
+            definitionData.postValue(definition)
         })
     }
 

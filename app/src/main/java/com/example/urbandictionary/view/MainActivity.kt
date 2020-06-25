@@ -43,7 +43,7 @@ class MainActivity : AppCompatActivity() {
             binding.loadingProgressbar.visibility = View.VISIBLE
             compositeDisposable.add(viewModel.getDefinitions(binding.searchEdittext.text.toString())
                 .subscribe({ definitions ->
-                    viewModel.definitionData.value = definitions[0]
+                    viewModel.definitionData.value = definitions
                     displayDefinitions(definitions, binding.sortSpinner.selectedItem.toString())
                     binding.loadingProgressbar.visibility = View.INVISIBLE
                     binding.itemsRecyclerview.visibility = View.VISIBLE

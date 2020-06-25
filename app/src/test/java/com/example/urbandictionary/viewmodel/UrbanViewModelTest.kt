@@ -1,9 +1,11 @@
 package com.example.urbandictionary.viewmodel
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
+import androidx.lifecycle.MutableLiveData
 import com.example.urbandictionary.model.Definition
 import com.example.urbandictionary.model.DefinitionResponse
 import io.reactivex.Observable
+import io.reactivex.disposables.CompositeDisposable
 import org.junit.Before
 
 import org.junit.Assert.*
@@ -24,6 +26,9 @@ class UrbanViewModelTest {
     var rule: TestRule = InstantTaskExecutorRule()
 
     @Mock
+    lateinit var compositeDisposable: CompositeDisposable
+
+    @Mock
     lateinit var vm : UrbanViewModel
 
     @Before
@@ -38,6 +43,7 @@ class UrbanViewModelTest {
         val definition = Definition()
         val definition1 = Definition()
 
+        vm.definitionData = MutableLiveData()
         definition.word = "game"
         definition.definition = "Something that is fun and entertaining"
         definition.writtenOn = "2020-06-20T00:00:00.000Z"
@@ -68,10 +74,11 @@ class UrbanViewModelTest {
         definitionResponse.definitionList = definitionList
         Mockito.`when`(vm.getDefinitions("game")).thenReturn(Observable.just(definitionList))
 
+//        vm.getDefinitions("game")
         vm.makeCall("game")
-        vm.getDefinitions("game")
 
-        assertEquals(definitionList, vm.definitionData.value)
+//        vm.definitionData.observeForever {  }
+        assertEquals(definitionResponse.definitionList, vm.definitionData.value)
 
     }
 }
