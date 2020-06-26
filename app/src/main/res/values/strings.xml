@@ -2,6 +2,7 @@
     <string name="app_name">UrbanDictionary</string>
     <string name="api_host">x-rapidapi-host:mashape-community-urban-dictionary.p.rapidapi.com</string>
     <string name="api_key">x-rapidapi-key:d529666efcmsh1f5e3d2dc08f4b6p16ebf8jsndb1d68f87792</string>
+    <string name="bottom_title">URBAN DICTIONARY</string>
     <string name="search_any">Search any word&#8230;</string>
     <string name="search">Search</string>
     <string name="sort_by">Sort By:</string>

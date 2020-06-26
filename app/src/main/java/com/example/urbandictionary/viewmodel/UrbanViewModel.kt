@@ -11,8 +11,8 @@ import io.reactivex.schedulers.Schedulers
 
 class UrbanViewModel: ViewModel() {
 
-    val urbanFactory: UrbanFactory = UrbanFactory();
-    val compositeDisposable : CompositeDisposable = CompositeDisposable()
+    private val urbanFactory: UrbanFactory = UrbanFactory();
+    private val compositeDisposable : CompositeDisposable = CompositeDisposable()
     var definitionData : MutableLiveData<List<Definition>> = MutableLiveData()
 
     fun makeCall(string: String) {
