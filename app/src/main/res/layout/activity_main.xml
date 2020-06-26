@@ -89,6 +89,21 @@
 
         />
 
+        <TextView
+            android:id="@+id/noresults_textview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="256dp"
+            android:textStyle="bold|italic"
+            android:textSize="48sp"
+            android:text="@string/no_results"
+            android:visibility="gone"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/items_recyclerview"
         android:layout_width="0dp"

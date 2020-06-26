@@ -41,6 +41,7 @@ class MainActivity : AppCompatActivity() {
             viewModel.makeCall(binding.searchEdittext.text.toString())
             binding.itemsRecyclerview.visibility = View.INVISIBLE
             binding.loadingProgressbar.visibility = View.VISIBLE
+            noresults_textview.visibility = View.GONE
             compositeDisposable.add(viewModel.getDefinitions(binding.searchEdittext.text.toString())
                 .subscribe({ definitions ->
                     viewModel.definitionData.value = definitions
@@ -80,8 +81,17 @@ class MainActivity : AppCompatActivity() {
         }
         items_recyclerview.adapter = adapter
 
+        //Text view is displayed if the list comes up empty
+        if(repositories.isEmpty()) {
+            noresults_textview.visibility = View.VISIBLE
+        }
+        else {
+            noresults_textview.visibility = View.GONE
+        }
+
     }
 
+    //In case of configuration changes
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
